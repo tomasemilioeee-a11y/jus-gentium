@@ -1,0 +1,455 @@
+{
+ "_note": "Source list. type: scholarly | institution | analysis | media | ngo. topics: default tags applied to every item (keywords add more). maxAgeDays / maxItems limit noisy feeds.",
+ "sources": [
+  {
+   "id": "ejiltalk",
+   "name": "EJIL:Talk!",
+   "type": "scholarly",
+   "url": "https://www.ejiltalk.org/feed/",
+   "site": "https://www.ejiltalk.org",
+   "topics": [
+    "PIL"
+   ]
+  },
+  {
+   "id": "justsecurity",
+   "name": "Just Security",
+   "type": "scholarly",
+   "url": "https://www.justsecurity.org/feed/",
+   "site": "https://www.justsecurity.org",
+   "topics": [
+    "PIL"
+   ]
+  },
+  {
+   "id": "lawfare",
+   "name": "Lawfare",
+   "type": "scholarly",
+   "url": "https://www.lawfaremedia.org/feeds/articles",
+   "site": "https://www.lawfaremedia.org",
+   "topics": [
+    "PIL"
+   ]
+  },
+  {
+   "id": "opiniojuris",
+   "name": "Opinio Juris",
+   "type": "scholarly",
+   "url": "https://opiniojuris.org/feed/",
+   "site": "https://opiniojuris.org",
+   "topics": [
+    "PIL"
+   ]
+  },
+  {
+   "id": "verfassungsblog",
+   "name": "Verfassungsblog",
+   "type": "scholarly",
+   "url": "https://verfassungsblog.de/feed/",
+   "site": "https://verfassungsblog.de",
+   "topics": []
+  },
+  {
+   "id": "voelkerrechtsblog",
+   "name": "Völkerrechtsblog",
+   "type": "scholarly",
+   "url": "https://voelkerrechtsblog.org/feed/",
+   "site": "https://voelkerrechtsblog.org",
+   "topics": [
+    "PIL"
+   ]
+  },
+  {
+   "id": "articlesofwar",
+   "name": "Articles of War (Lieber Institute)",
+   "type": "scholarly",
+   "url": "https://lieber.westpoint.edu/feed/",
+   "site": "https://lieber.westpoint.edu",
+   "topics": [
+    "IHL"
+   ]
+  },
+  {
+   "id": "armedgroups",
+   "name": "Armed Groups and International Law",
+   "type": "scholarly",
+   "url": "https://armedgroups-internationallaw.org/feed/",
+   "site": "https://armedgroups-internationallaw.org",
+   "topics": [
+    "IHL"
+   ]
+  },
+  {
+   "id": "icrcblog",
+   "name": "ICRC Humanitarian Law & Policy",
+   "type": "institution",
+   "url": "https://blogs.icrc.org/law-and-policy/feed/",
+   "site": "https://blogs.icrc.org/law-and-policy",
+   "topics": [
+    "IHL"
+   ]
+  },
+  {
+   "id": "icrcnews",
+   "name": "ICRC News",
+   "type": "institution",
+   "url": "https://www.icrc.org/en/rss/news",
+   "site": "https://www.icrc.org",
+   "topics": [
+    "IHL"
+   ],
+   "maxItems": 20
+  },
+  {
+   "id": "strasbourg",
+   "name": "Strasbourg Observers",
+   "type": "scholarly",
+   "url": "https://strasbourgobservers.com/feed/",
+   "site": "https://strasbourgobservers.com",
+   "topics": [
+    "IHRL"
+   ]
+  },
+  {
+   "id": "dailyjus",
+   "name": "Jus Mundi — Daily Jus",
+   "type": "scholarly",
+   "url": "https://dailyjus.com/feed",
+   "site": "https://dailyjus.com",
+   "topics": [
+    "IDS"
+   ]
+  },
+  {
+   "id": "cilj",
+   "name": "Cambridge International Law Journal Blog",
+   "type": "scholarly",
+   "url": "https://www.cilj.co.uk/feed/",
+   "site": "https://www.cilj.co.uk",
+   "topics": [
+    "PIL"
+   ],
+   "maxAgeDays": 60
+  },
+  {
+   "id": "justiceinfo",
+   "name": "JusticeInfo.net",
+   "type": "media",
+   "url": "https://www.justiceinfo.net/en/feed",
+   "site": "https://www.justiceinfo.net",
+   "topics": [
+    "ICL"
+   ]
+  },
+  {
+   "id": "iccforum",
+   "name": "ICC Press Releases",
+   "type": "institution",
+   "url": "https://www.icc-cpi.int/rss/news/all",
+   "site": "https://www.icc-cpi.int",
+   "topics": [
+    "ICL"
+   ]
+  },
+  {
+   "id": "icj",
+   "name": "International Court of Justice",
+   "type": "institution",
+   "url": "https://www.icj-cij.org/press-releases",
+   "site": "https://www.icj-cij.org",
+   "scraper": "icj",
+   "topics": [
+    "PIL",
+    "IDS"
+   ],
+   "maxAgeDays": 90
+  },
+  {
+   "id": "itlos",
+   "name": "ITLOS",
+   "type": "institution",
+   "url": "https://www.itlos.org/en/main/press-media/press-releases/",
+   "site": "https://www.itlos.org",
+   "scraper": "itlos",
+   "topics": [
+    "LOS",
+    "IDS"
+   ],
+   "maxAgeDays": 120
+  },
+  {
+   "id": "irmct",
+   "name": "IRMCT (UN Residual Mechanism)",
+   "type": "institution",
+   "url": "https://www.irmct.org/en/news",
+   "site": "https://www.irmct.org",
+   "scraper": "irmct",
+   "topics": [
+    "ICL"
+   ],
+   "maxAgeDays": 60
+  },
+  {
+   "id": "icsid",
+   "name": "ICSID",
+   "type": "institution",
+   "url": "https://icsid.worldbank.org/news-and-events/news-releases",
+   "site": "https://icsid.worldbank.org",
+   "scraper": "icsid",
+   "topics": [
+    "IDS"
+   ],
+   "maxAgeDays": 180
+  },
+  {
+   "id": "wto",
+   "name": "World Trade Organization",
+   "type": "institution",
+   "url": "https://www.wto.org/library/rss/latest_news_e.xml",
+   "site": "https://www.wto.org",
+   "topics": [],
+   "maxAgeDays": 30,
+   "maxItems": 15
+  },
+  {
+   "id": "nclos",
+   "name": "NCLOS Blog (Law of the Sea)",
+   "type": "scholarly",
+   "url": "https://site.uit.no/nclos/feed/",
+   "site": "https://site.uit.no/nclos",
+   "topics": [
+    "LOS"
+   ]
+  },
+  {
+   "id": "marex",
+   "name": "The Maritime Executive",
+   "type": "media",
+   "url": "https://www.maritime-executive.com/articles.rss",
+   "site": "https://www.maritime-executive.com",
+   "topics": [],
+   "maxAgeDays": 5,
+   "maxItems": 20,
+   "_why": "keyword-tagged only: much of its output is shipping-industry news"
+  },
+  {
+   "id": "unnews_law",
+   "name": "UN News — Law & Crime Prevention",
+   "type": "institution",
+   "url": "https://news.un.org/feed/subscribe/en/news/topic/law-and-crime-prevention/feed/rss.xml",
+   "site": "https://news.un.org",
+   "topics": [
+    "PIL"
+   ]
+  },
+  {
+   "id": "unpress",
+   "name": "UN Meetings Coverage & Press",
+   "type": "institution",
+   "url": "https://press.un.org/en/rss.xml",
+   "site": "https://press.un.org",
+   "topics": [
+    "PIL"
+   ]
+  },
+  {
+   "id": "unnews_hr",
+   "name": "UN News — Human Rights",
+   "type": "institution",
+   "url": "https://news.un.org/feed/subscribe/en/news/topic/human-rights/feed/rss.xml",
+   "site": "https://news.un.org",
+   "topics": [
+    "IHRL"
+   ]
+  },
+  {
+   "id": "unnews_peace",
+   "name": "UN News — Peace & Security",
+   "type": "institution",
+   "url": "https://news.un.org/feed/subscribe/en/news/topic/peace-and-security/feed/rss.xml",
+   "site": "https://news.un.org",
+   "topics": [
+    "GEO"
+   ]
+  },
+  {
+   "id": "hrw",
+   "name": "Human Rights Watch",
+   "type": "ngo",
+   "url": "https://www.hrw.org/rss/news",
+   "site": "https://www.hrw.org",
+   "topics": [
+    "IHRL"
+   ],
+   "maxItems": 25
+  },
+  {
+   "id": "amnesty",
+   "name": "Amnesty International",
+   "type": "ngo",
+   "url": "https://www.amnesty.org/en/feed/",
+   "site": "https://www.amnesty.org",
+   "topics": [
+    "IHRL"
+   ],
+   "maxItems": 25
+  },
+  {
+   "id": "crisisgroup",
+   "name": "International Crisis Group",
+   "type": "analysis",
+   "url": "https://www.crisisgroup.org/rss",
+   "site": "https://www.crisisgroup.org",
+   "topics": [
+    "GEO"
+   ]
+  },
+  {
+   "id": "foreignaffairs",
+   "name": "Foreign Affairs",
+   "type": "analysis",
+   "url": "https://www.foreignaffairs.com/rss.xml",
+   "site": "https://www.foreignaffairs.com",
+   "topics": [
+    "GEO"
+   ]
+  },
+  {
+   "id": "foreignpolicy",
+   "name": "Foreign Policy",
+   "type": "analysis",
+   "url": "https://foreignpolicy.com/feed/",
+   "site": "https://foreignpolicy.com",
+   "topics": [
+    "GEO"
+   ]
+  },
+  {
+   "id": "economist",
+   "name": "The Economist — International",
+   "type": "media",
+   "url": "https://www.economist.com/international/rss.xml",
+   "site": "https://www.economist.com/international",
+   "topics": [
+    "GEO"
+   ],
+   "maxAgeDays": 10,
+   "maxItems": 20
+  },
+  {
+   "id": "warontherocks",
+   "name": "War on the Rocks",
+   "type": "analysis",
+   "url": "https://warontherocks.com/feed/",
+   "site": "https://warontherocks.com",
+   "topics": [
+    "GEO"
+   ]
+  },
+  {
+   "id": "thediplomat",
+   "name": "The Diplomat",
+   "type": "media",
+   "url": "https://thediplomat.com/feed/",
+   "site": "https://thediplomat.com",
+   "topics": [
+    "GEO"
+   ],
+   "maxAgeDays": 5,
+   "maxItems": 30
+  },
+  {
+   "id": "bbcworld",
+   "name": "BBC News — World",
+   "type": "media",
+   "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
+   "site": "https://www.bbc.com/news/world",
+   "topics": [
+    "GEO"
+   ],
+   "maxAgeDays": 4,
+   "maxItems": 40
+  },
+  {
+   "id": "guardianworld",
+   "name": "The Guardian — World",
+   "type": "media",
+   "url": "https://www.theguardian.com/world/rss",
+   "site": "https://www.theguardian.com/world",
+   "topics": [
+    "GEO"
+   ],
+   "maxAgeDays": 4,
+   "maxItems": 40
+  },
+  {
+   "id": "guardianlaw",
+   "name": "The Guardian — Law",
+   "type": "media",
+   "url": "https://www.theguardian.com/law/rss",
+   "site": "https://www.theguardian.com/law",
+   "topics": [],
+   "maxAgeDays": 10
+  },
+  {
+   "id": "aljazeera",
+   "name": "Al Jazeera English",
+   "type": "media",
+   "url": "https://www.aljazeera.com/xml/rss/all.xml",
+   "site": "https://www.aljazeera.com",
+   "topics": [
+    "GEO"
+   ],
+   "maxAgeDays": 4,
+   "maxItems": 40
+  },
+  {
+   "id": "nytworld",
+   "name": "The New York Times — World",
+   "type": "media",
+   "url": "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
+   "site": "https://www.nytimes.com/section/world",
+   "topics": [
+    "GEO"
+   ],
+   "maxAgeDays": 4,
+   "maxItems": 40
+  },
+  {
+   "id": "dw",
+   "name": "Deutsche Welle",
+   "type": "media",
+   "url": "https://rss.dw.com/rdf/rss-en-world",
+   "site": "https://www.dw.com",
+   "topics": [
+    "GEO"
+   ],
+   "maxAgeDays": 4,
+   "maxItems": 30
+  },
+  {
+   "id": "france24",
+   "name": "France 24",
+   "type": "media",
+   "url": "https://www.france24.com/en/rss",
+   "site": "https://www.france24.com/en",
+   "topics": [
+    "GEO"
+   ],
+   "maxAgeDays": 4,
+   "maxItems": 30
+  },
+  {
+   "id": "politicoeu",
+   "name": "POLITICO Europe",
+   "type": "media",
+   "url": "https://www.politico.eu/feed/",
+   "site": "https://www.politico.eu",
+   "topics": [
+    "GEO"
+   ],
+   "maxAgeDays": 4,
+   "maxItems": 30
+  }
+ ]
+}
