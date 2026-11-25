@@ -68,3 +68,37 @@ def icsid(page, base="https://icsid.worldbank.org"):
 
 
 SCRAPERS = {"icj": icj, "itlos": itlos, "irmct": irmct, "icsid": icsid}
+
+
+def bluesky(page, base="https://bsky.app"):
+    """A scholar's own recent posts via Bluesky's public API (no replies, no reposts).
+
+    The post text becomes the title; a shared article (link card) is kept as ext_title/ext_url.
+    """
+    import json
+    out, seen = [], set()
+    for item in json.loads(page).get("feed", []):
+        if "reason" in item:            # a repost of someone else
+            continue
+        post = item["post"]
+        text = re.sub(r"\s+", " ", post.get("record", {}).get("text", "")).strip()
+        if len(text) < 60 or text[:80] in seen:
+            continue
+        seen.add(text[:80])
+        rkey = post["uri"].rsplit("/", 1)[-1]
+        embed = post.get("embed") or {}
+        ext = embed.get("external") or (embed.get("media") or {}).get("external") or {}
+        out.append({
+            "title": text,
+            "link": f"{base}/profile/{post['author']['handle']}/post/{rkey}",
+            "date": post.get("record", {}).get("createdAt") or post.get("indexedAt", ""),
+            "summary": "",
+            "author": post["author"].get("displayName", ""),
+            "kind": "post",
+            "ext_title": ext.get("title", ""),
+            "ext_url": ext.get("uri", ""),
+        })
+    return out
+
+
+SCRAPERS["bluesky"] = bluesky

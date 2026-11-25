@@ -1,5 +1,5 @@
 // App shell is cached for offline use; the news file is always fetched fresh when online.
-const CACHE = "jg-v3";
+const CACHE = "jg-v4";
 const SHELL = ["./", "index.html", "styles.css", "app.js", "questions.js", "manifest.webmanifest",
   "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png"];
 

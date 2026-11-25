@@ -229,7 +229,7 @@ def process(src, now):
         return src, [], f"{type(e).__name__}: {e}"[:200]
     items = []
     for en in entries:
-        title = clean(en["title"])
+        title = clean(en["title"], 320 if en.get("kind") == "post" else None)
         link = en["link"].strip()
         if not title or not link.startswith("http"):
             continue
@@ -239,7 +239,9 @@ def process(src, now):
         summary = clean(en["summary"], 700)
         if summary.lower().startswith(title.lower()[:60]) and len(summary) <= len(title) + 5:
             summary = ""
-        kw = keyword_topics(title, summary)
+        kw = keyword_topics(title, summary + " " + en.get("ext_title", ""))
+        if src.get("requireLaw") and not kw & LAW_TOPICS:
+            continue  # e.g. a scholar's post about something other than international law
         topics = kw | set(src.get("topics", []))
         # Law angle = the headline/summary itself raises a legal issue (not just the outlet's default)
         law_hit = bool(kw & LAW_TOPICS)
@@ -255,6 +257,9 @@ def process(src, now):
             # Media/think-tank item that touches a legal field: the law–politics bridge
             "lawAngle": law_hit and src["type"] in ("media", "analysis"),
         })
+        if en.get("kind") == "post":
+            items[-1].update({"kind": "post", "extTitle": clean(en.get("ext_title", ""), 160),
+                              "extUrl": en.get("ext_url", "") if en.get("ext_url", "").startswith("http") else ""})
         if len(items) >= max_items:
             break
     return src, items, None
@@ -281,7 +286,7 @@ def main():
             seen.add(key)
             items.append(it)
             kept += 1
-        src_meta.append({k: src.get(k) for k in ("id", "name", "type", "site", "topics")}
+        src_meta.append({k: src.get(k) for k in ("id", "name", "type", "site", "topics", "bio") if src.get(k) is not None}
                         | {"ok": err is None, "count": kept, **({"error": err} if err else {})})
         status = "ok " if err is None else "ERR"
         print(f"[{status}] {src['name']:<45} {kept:>3} items {err or ''}", file=sys.stderr)

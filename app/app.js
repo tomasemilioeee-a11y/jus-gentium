@@ -22,7 +22,7 @@ const COURTS = {
   irmct: { abbr: "IRMCT", c: "ICL" },
   icsid: { abbr: "ICSID", c: "IDS" },
 };
-const TYPES = { scholarly: "Scholarship", institution: "Institutions", analysis: "Analysis", media: "Media", ngo: "NGOs" };
+const TYPES = { scholarly: "Scholarship", institution: "Institutions", analysis: "Analysis", media: "Media", ngo: "NGOs", voices: "Scholars on Bluesky" };
 const LAW_SOURCE_TYPES = new Set(["scholarly", "institution", "ngo"]);
 const PAGE = 40;
 
@@ -113,7 +113,26 @@ const ICON = {
   share: '<svg viewBox="0 0 24 24"><path d="M12 15V4M8 8l4-4 4 4M5 13v6h14v-6"/></svg>',
 };
 
+const domain = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch { return ""; } };
+function voice(i) {
+  const tags = i.topics.map((t) => `<span class="tag" style="--c:var(--t-${t})">${esc(TOPIC[t]?.label || t)}</span>`).join("");
+  return `<article class="story voice${state.read.has(i.id) ? " read" : ""}" data-id="${esc(i.id)}">
+    <div class="kick">
+      ${isNew(i) ? '<span class="new">New</span>' : ""}
+      <span class="src">${esc(srcName(i))}</span><span class="when">· Bluesky · ${ago(i.date)}</span>
+    </div>
+    <div class="actions">
+      <button data-act="save" class="${state.saved[i.id] ? "on" : ""}" aria-label="Save">${ICON.save}</button>
+      <button data-act="share" aria-label="Share">${ICON.share}</button>
+    </div>
+    <a class="post-text" href="${esc(i.link)}" target="_blank" rel="noopener" data-act="read">${esc(i.title)}</a>
+    ${i.extUrl ? `<a class="ext" href="${esc(i.extUrl)}" target="_blank" rel="noopener" data-act="read"><span class="ext-t">${esc(i.extTitle || i.extUrl)}</span><span class="ext-d">${esc(domain(i.extUrl))} ↗</span></a>` : ""}
+    <div class="tags">${tags}</div>
+  </article>`;
+}
+
 function story(i) {
+  if (i.kind === "post") return voice(i);
   const tags = i.topics.map((t) => `<span class="tag" style="--c:var(--t-${t})">${esc(TOPIC[t]?.label || t)}</span>`).join("");
   const law = i.lawAngle ? `<span class="tag law">Law × politics</span>` : "";
   return `<article class="story${state.read.has(i.id) ? " read" : ""}" data-id="${esc(i.id)}">
@@ -152,7 +171,9 @@ function sh({ kicker, title, num, color, goto, lede }) {
 
 /* ---------- Today ---------- */
 function renderBrief() {
-  const items = visibleItems();
+  const all = visibleItems();
+  const items = all.filter((i) => i.kind !== "post");
+  const posts = all.filter((i) => i.kind === "post");
   const cutoff = Date.now() - 36 * 3600 * 1000;
   const fresh = items.filter((i) => new Date(i.date) > cutoff);
   const newCount = items.filter(isNew).length;
@@ -203,6 +224,13 @@ function renderBrief() {
     html += `<div class="list">${world.map(story).join("")}</div>`;
   }
 
+  const voices = [];
+  for (const p of posts) { if (voices.length === 3) break; if (!voices.some((v) => v.source === p.source)) voices.push(p); }
+  if (voices.length) {
+    html += sh({ kicker: "Voices", title: "Scholars on Bluesky", goto: "VOICES", lede: "What international lawyers are saying, in their own words. Personal views, not edited journalism." });
+    html += `<div class="list">${voices.map(voice).join("")}</div>`;
+  }
+
   html += sh({ kicker: "Para pensar", title: "Questions to sit with", lede: "Open questions across the fields, each paired with today's stories." });
   html += `<div class="questions" id="questions">${questionsHTML(items, fresh)}</div>`;
   html += `<p class="signoff">That's the world today. Now go change it.</p>`;
@@ -232,7 +260,7 @@ function readAlongside(q, items) {
   const words = new Set(q.q.split(/\s+/).map(stem).filter((w) => w.length >= 4 && !STOP.has(w)));
   const now = Date.now();
   const scored = items
-    .filter((i) => now - new Date(i.date) < 10 * 86400000 && i.topics.some((t) => q.f.includes(t)))
+    .filter((i) => i.kind !== "post" && now - new Date(i.date) < 10 * 86400000 && i.topics.some((t) => q.f.includes(t)))
     .map((i) => {
       const hits = new Set((i.title + " " + i.summary).split(/\s+/).map(stem).filter((w) => words.has(w))).size;
       const fields = i.topics.filter((t) => q.f.includes(t) && t !== "GEO").length;
@@ -283,7 +311,7 @@ function renderFeed(keepControls = false) {
   const chip = (id, label, mark, on) => `<button class="chip${on ? " on" : ""}" data-topic="${id}">${mark}${esc(label)}</button>`;
   const topicChips = [chip("ALL", "All", "", state.topic === "ALL"), chip("LAW", "Law × politics", '<span class="ring"></span>', state.topic === "LAW")]
     .concat(TOPICS.map((t) => chip(t.id, t.label, `<span class="dot" style="--c:var(--t-${t.id})"></span>`, state.topic === t.id))).join("");
-  const typeOpts = [["ALL", "All sources"], ["scholarly", "Scholarship"], ["institution", "Institutions"], ["media", "Media & analysis"], ["ngo", "NGOs"]];
+  const typeOpts = [["ALL", "All sources"], ["scholarly", "Scholarship"], ["institution", "Institutions"], ["media", "Media & analysis"], ["ngo", "NGOs"], ["voices", "Scholars"]];
   const typeChips = typeOpts.map(([id, l]) => `<button class="chip${state.type === id ? " on" : ""}" data-type="${id}">${l}</button>`).join("");
 
   if (!keepControls || !$(".controls")) {
@@ -339,7 +367,7 @@ function renderSources() {
     html += sh({ kicker: `${groups[type].length} sources`, title: TYPES[type] });
     html += `<div class="group">` + groups[type].sort((a, b) => a.name.localeCompare(b.name)).map((s) => {
       const tags = (s.topics || []).map((t) => TOPIC[t]?.label || t).join(" · ");
-      const status = s.ok ? `${s.count} recent` : `<span class="err">unreachable right now</span>`;
+      const status = s.ok ? (s.bio ? `${esc(s.bio)} · ${s.count} recent` : `${s.count} recent`) : `<span class="err">unreachable right now</span>`;
       return `<div class="src-row">
         <div class="info"><div class="name"><a href="${esc(s.site)}" target="_blank" rel="noopener">${esc(s.name)}</a></div>
         <div class="sub">${status}${tags ? " · " + esc(tags) : ""}</div></div>
@@ -351,6 +379,7 @@ function renderSources() {
       <p class="sig">“By knowing about politics, you can learn much more about the context in which the law is embedded.”</p>
       <p><b>How it works.</b> Every two hours the app reads the outlets above (their RSS feeds, or the courts' own press-release pages) and links straight to the original. Nothing is rewritten.</p>
       <p>Fields are tagged from each outlet's specialism plus keywords, so the odd tag will be off. <b>Law × Politics</b> marks a news or think-tank piece that raises a legal question.</p>
+      <p><b>Scholars on Bluesky</b> shows each scholar's own posts from the last two weeks, and only those touching international law. Replies, reposts and the rest are left out. These are personal views, not edited journalism.</p>
       <p class="meta">Data refreshed ${esc(new Date(state.data.generated).toLocaleString("en-GB"))}</p>
     </div>`;
   view.innerHTML = html;
@@ -393,7 +422,8 @@ $("#refresh").addEventListener("click", () => load(true));
 view.addEventListener("click", async (e) => {
   const goto = e.target.closest("[data-goto]");
   if (goto) {
-    state.topic = goto.dataset.goto; state.type = "ALL"; state.q = ""; state.shown = PAGE;
+    const g = goto.dataset.goto;
+    state.topic = g === "VOICES" ? "ALL" : g; state.type = g === "VOICES" ? "voices" : "ALL"; state.q = ""; state.shown = PAGE;
     return go("feed");
   }
   const tchip = e.target.closest("[data-topic]");

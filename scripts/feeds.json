@@ -450,6 +450,189 @@
    ],
    "maxAgeDays": 4,
    "maxItems": 30
+  },
+  {
+   "id": "bsky_rgoodlaw",
+   "name": "Ryan Goodman",
+   "type": "voices",
+   "scraper": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=did:plc:mcxwgi6ytwp72kzqmujcixep&filter=posts_no_replies&limit=30",
+   "site": "https://bsky.app/profile/rgoodlaw.bsky.social",
+   "bio": "NYU Law · co-editor-in-chief, Just Security",
+   "topics": [
+    "PIL"
+   ],
+   "requireLaw": true,
+   "maxAgeDays": 14,
+   "maxItems": 4
+  },
+  {
+   "id": "bsky_oonahathaway",
+   "name": "Oona Hathaway",
+   "type": "voices",
+   "scraper": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=did:plc:n6bqoz2y2yo33vzehasnxrks&filter=posts_no_replies&limit=30",
+   "site": "https://bsky.app/profile/oonahathaway.bsky.social",
+   "bio": "Yale Law School · President, ASIL",
+   "topics": [
+    "PIL"
+   ],
+   "requireLaw": true,
+   "maxAgeDays": 14,
+   "maxItems": 4
+  },
+  {
+   "id": "bsky_adhaque",
+   "name": "Adil Haque",
+   "type": "voices",
+   "scraper": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=did:plc:hhz6upbmwtgsneuii6hyxxvo&filter=posts_no_replies&limit=30",
+   "site": "https://bsky.app/profile/adhaque.bsky.social",
+   "bio": "Rutgers Law · use of force",
+   "topics": [
+    "PIL",
+    "IHL"
+   ],
+   "requireLaw": true,
+   "maxAgeDays": 14,
+   "maxItems": 4
+  },
+  {
+   "id": "bsky_kevinjonheller",
+   "name": "Kevin Jon Heller",
+   "type": "voices",
+   "scraper": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=did:plc:oad5kojb5fqu3zicncmkgqpi&filter=posts_no_replies&limit=30",
+   "site": "https://bsky.app/profile/kevinjonheller.bsky.social",
+   "bio": "University of Copenhagen · Opinio Juris",
+   "topics": [
+    "ICL"
+   ],
+   "requireLaw": true,
+   "maxAgeDays": 14,
+   "maxItems": 4
+  },
+  {
+   "id": "bsky_tomdannenbaum",
+   "name": "Tom Dannenbaum",
+   "type": "voices",
+   "scraper": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=did:plc:a5sdc2utjbl7xgvbdbmbzpvd&filter=posts_no_replies&limit=30",
+   "site": "https://bsky.app/profile/tomdannenbaum.bsky.social",
+   "bio": "Stanford Law · IHL, ICL, IHRL",
+   "topics": [
+    "IHL",
+    "ICL"
+   ],
+   "requireLaw": true,
+   "maxAgeDays": 14,
+   "maxItems": 4
+  },
+  {
+   "id": "bsky_janinadill",
+   "name": "Janina Dill",
+   "type": "voices",
+   "scraper": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=did:plc:sfehey537nkz7bonwdyxomgn&filter=posts_no_replies&limit=30",
+   "site": "https://bsky.app/profile/janinadill.bsky.social",
+   "bio": "Oxford · co-director, ELAC",
+   "topics": [
+    "IHL"
+   ],
+   "requireLaw": true,
+   "maxAgeDays": 14,
+   "maxItems": 4
+  },
+  {
+   "id": "bsky_eliavl",
+   "name": "Eliav Lieblich",
+   "type": "voices",
+   "scraper": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=did:plc:a6nkf7lke5cdich5z3astd6t&filter=posts_no_replies&limit=30",
+   "site": "https://bsky.app/profile/eliavl.bsky.social",
+   "bio": "Tel Aviv University · Yearbook of IHL",
+   "topics": [
+    "IHL"
+   ],
+   "requireLaw": true,
+   "maxAgeDays": 14,
+   "maxItems": 4
+  },
+  {
+   "id": "bsky_shanedarcy",
+   "name": "Shane Darcy",
+   "type": "voices",
+   "scraper": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=did:plc:4lfq6wxfpo4ikmsidbuijywr&filter=posts_no_replies&limit=30",
+   "site": "https://bsky.app/profile/shanedarcy.bsky.social",
+   "bio": "Irish Centre for Human Rights, Galway",
+   "topics": [
+    "ICL",
+    "IHL"
+   ],
+   "requireLaw": true,
+   "maxAgeDays": 14,
+   "maxItems": 4
+  },
+  {
+   "id": "bsky_sevslv",
+   "name": "Sergey Vasiliev",
+   "type": "voices",
+   "scraper": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=did:plc:cytolufvfttcng7dxuy5l7tn&filter=posts_no_replies&limit=30",
+   "site": "https://bsky.app/profile/sevslv.bsky.social",
+   "bio": "International courts & accountability",
+   "topics": [
+    "ICL"
+   ],
+   "requireLaw": true,
+   "maxAgeDays": 14,
+   "maxItems": 4
+  },
+  {
+   "id": "bsky_darrylrobs",
+   "name": "Darryl Robinson",
+   "type": "voices",
+   "scraper": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=did:plc:irqlr4b3zwdqdtmrc5k6fcjc&filter=posts_no_replies&limit=30",
+   "site": "https://bsky.app/profile/darrylrobs.bsky.social",
+   "bio": "Queen's University · international criminal justice",
+   "topics": [
+    "ICL"
+   ],
+   "requireLaw": true,
+   "maxAgeDays": 14,
+   "maxItems": 4
+  },
+  {
+   "id": "bsky_alonsogd",
+   "name": "Alonso Gurmendi",
+   "type": "voices",
+   "scraper": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=did:plc:zgvanxs4hgkgomtbsz6anfk3&filter=posts_no_replies&limit=30",
+   "site": "https://bsky.app/profile/alonso-gd.bsky.social",
+   "bio": "LSE · Opinio Juris",
+   "topics": [
+    "IHRL"
+   ],
+   "requireLaw": true,
+   "maxAgeDays": 14,
+   "maxItems": 4
+  },
+  {
+   "id": "bsky_djag2",
+   "name": "Douglas Guilfoyle",
+   "type": "voices",
+   "scraper": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=did:plc:6224ogbnhmjhtpjoteynx4hk&filter=posts_no_replies&limit=30",
+   "site": "https://bsky.app/profile/djag2.bsky.social",
+   "bio": "UNSW Canberra · maritime security",
+   "topics": [
+    "LOS"
+   ],
+   "requireLaw": true,
+   "maxAgeDays": 14,
+   "maxItems": 4
   }
  ]
 }
